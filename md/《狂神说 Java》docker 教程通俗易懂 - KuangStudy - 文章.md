@@ -1,4 +1,5 @@
-> 本文由 [简悦 SimpRead](http://ksria.com/simpread/) 转码， 原文地址 [www.kuangstudy.com](https://www.kuangstudy.com/bbs/1552836707509223426)
+> 本文由 [简悦 SimpRead](http://ksria.com/simpread/) 转码， 原文地址 [www.kuangstudy.com](https://www.kuangstudy.com/bbs/1552836707509223426) 
+> #######. 转载文章    FROM www.kuangstudy.com   狂神说   
 
 > KuangStudy 是一个致力于为每个想学习知识的人提供一个少走弯路的平台, 包含优质体系课程、文章博客、专栏书写、技术论坛、资源下载等产品服务, 提供有用、优质、完整内容的自学交流社区.> 总结笔记......
 
