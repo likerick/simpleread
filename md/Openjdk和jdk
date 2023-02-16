@@ -1,0 +1,60 @@
+> 本文由 [简悦 SimpRead](http://ksria.com/simpread/) 转码， 原文地址 [blog.csdn.net](https://blog.csdn.net/daimenglaoshi/article/details/127954214)
+
+[OpenJDK](https://so.csdn.net/so/search?q=OpenJDK&spm=1001.2101.3001.7020) 与 JDK 的区别分析  
+一、以下是具体分析：
+
+使用过 LINUX 的人都应该知道，在大多数 LINUX 发行版本里，内置或者通过软件源[安装 JDK](https://so.csdn.net/so/search?q=%E5%AE%89%E8%A3%85JDK&spm=1001.2101.3001.7020) 的话，都是安装的 OpenJDK，那么到底什么是 OpenJDK，它与 Sun JDK 有什么关系和区别呢？ 
+
+历史上的原因是，OpenJDK 是 JDK 的开放原始码版本，以 [GPL](https://so.csdn.net/so/search?q=GPL&spm=1001.2101.3001.7020) 协议的形式放出。在 JDK7 的时候，OpenJDK 已经成为 JDK7 的主干开发，Sun JDK7 是在 OpenJDK7 的基础上发布的，其大部分原始码都相同，只有少部分原始码被替换掉。使用 JRL（JavaResearch License，Java 研究授权协议）发布。 
+
+至于 OpenJDK6 则更是有其复杂的一面，首先是 OpenJDK6 是 JDK7 的一个分支，并且尽量去除 Java SE7 的新特性，使其尽量的符合 Java6 的标准。 
+
+关于 JDK 和 OpenJDK 的区别，可以归纳为以下几点： 
+
+授权协议的不同： 
+
+OpenJDK 采用 GPL V2 协议放出，而 JDK 则采用 JRL 放出。两者协议虽然都是开放源代码的，但是在使用上的不同在于 GPL V2 允许在商业上使用，而 JRL 只允许个人研究使用。 
+
+OpenJDK 不包含 Deployment（部署）功能： 
+
+部署的功能包括：Browser Plugin、Java Web Start、以及 Java 控制面板，这些功能在 OpenJDK 中是找不到的。 
+
+OpenJDK 源代码不完整： 
+
+这个很容易想到，在采用 GPL 协议的 OpenJDK 中，Sun JDK 的一部分源代码因为产权的问题无法开放 OpenJDK 使用，其中最主要的部份就是 JMX 中的可选元件 SNMP 部份的代码。因此这些不能开放的源代码将它作成 plugin，以供 OpenJDK 编译时使用，你也可以选择不要使用 plugin。而 Icedtea 则为这些不完整的部分开发了相同功能的源代码 (OpenJDK6)，促使 OpenJDK 更加完整。 
+
+部分源代码用开源代码替换： 
+
+由于产权的问题，很多产权不是 SUN 的源代码被替换成一些功能相同的开源代码，比如说字体栅格化引擎，使用 Free Type 代替。 
+
+OpenJDK 只包含最精简的 JDK： 
+
+OpenJDK 不包含其他的软件包，比如 Rhino Java DB JAXP……，并且可以分离的软件包也都是尽量的分离，但是这大多数都是自由软件，你可以自己下载加入。 
+
+不能使用 Java 商标： 
+
+这个很容易理解，在安装 OpenJDK 的机器上，输入 “java -version” 显示的是 OpenJDK，但是如果是使用 Icedtea 补丁的 OpenJDK，显示的是 java。（未验证） 
+
+总之，在 Java 体系中，还是有很多不自由的成分，源代码的开发不够彻底，希望 Oracle 能够让 JCP 更自由开放一些，这也是所有 Java 社区所希望的。 
+
+以下内容引用知乎的内容 https://www.zhihu.com/question/19646618/answer/40621705 对上面的回答进行补充：
+
+Sun JDK 能用于商业用途的 license 是 SCSL（Sun Community Source License）。JRL（Java Research License）是 2004 年开始用的，伴随 Sun JDK6 发布而开始使用，远比 JDK7 早。
+
+从代码完整性来说：
+
+Sun JDK > SCSL > JRL > OpenJDK
+
+Sun JDK 有少量代码是完全不开发的，即便在 SCSL 版里也没有。但这种代码非常非常少。
+
+SCSL 代码比 JRL 多一些 closed 目录里的内容。
+
+JRL 比 OpenJDK 多一些受 license 影响而无法以 GPLv2 开放的内容。
+
+但从 Oracle JDK7/OpenJDK7 开始，闭源和开源版的实质差异实在是非常非常小。与其说 OpenJDK7 是 “不完整的 JDK”，还不如说 Oracle JDK7 在 OpenJDK7 的基础上带了一些 value-add，其中很多还没啥用（例如 browser plugin）。
+
+二、个人分析理解：
+
+JDK 有两种叫法，早期叫做 Sun JDK，现在是 Oracle JDK，其实都是同一个东西。但这种说法也不一定准确，因为 OpenJDK 也叫做 Oracle OpenJDK。
+
+然而最简单直白的理解，也属于个人理解：OpenJDK 是 JDK 的开源代码，也不算全是，因为在 JDK 部分，有一些是 Oracle 未开放源代码的，还有就是有一些的历史原因。
